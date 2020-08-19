@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Particles Webpage</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            /* background: #fd9400; */
+            margin: 0%;
+            padding: 0%;
+            
+        }
+
+        section {
+            background-image: url('Desert.png');
+            background-attachment: fixed;
+            /* background-image: linear-gradient(#2d2d2d, white, #fd9400); */
+            /* background-color: #000000; */
+            height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .particles-js {
+            width: 100%;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            outline: none;
+            float: right;
+        }
+
+        button#playpausebtn {
+            background: url(play.png) no-repeat;
+            background-size: cover;
+            width: 20px;
+            height: 20px;
+            /* border: 2px solid rgb(53, 53, 53); */
+            position: relative;
+            top: 92%;
+            right: 4%;
+        }
+
+        .as{
+            height: 100vh; 
+            background-image: linear-gradient(#9cdafd, white, #fd9400); 
+        }
+
+        .cloud{
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            /* background: url(cloud.png); */
+            background-repeat: no-repeat;
+            animation: animate 1ms linear infinite;
+        }
+
+        @keyframes animation 
+        {
+            0%
+            {
+                background-position: 0px;
+                /* animation-duration: 4s; */
+            }
+            100%
+            {
+                background-position: 5440px;
+                /* animation-duration: 4s; */
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <section class="particles-js">
+        <div class="cloud">
+            <button id="playpausebtn"></button>
+        </div>
+        <div class="btext">
+            <!-- <h1>Code Yard</h1>
+            <p>Live to Code Another Day</p> -->
+            <a href="index.html" class="btn" onclick="scroll">Get Started</a>
+        </div>
+        
+
+        <!-- <img src="play.png" alt=""> -->
+    </section>
+    <div class="as">
+        <div class="cloud"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            var scroll = $(window).scrollTop();
+            $('.particles-js').css({
+                filter: "blur(" + (scroll/50) + "px)"
+                })
+        }) 
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <!-- <script>
+        particlesJS.load('particles-js', 'particles.json',
+            function () {
+                console.log('particles.json loaded...')
+            })
+    </script> -->
+    <script>
+        var audio, playbtn, mutebtn, seek_bar;
+        function initAudioPlayer() {
+            audio = new Audio();
+            audio.src = "bensound-dubstep.mp3";
+            audio.loop = true;
+            audio.play();
+            // Set object references
+            playbtn = document.getElementById("playpausebtn");
+            // Add Event Handling
+            playbtn.addEventListener("click", playPause);
+            Functions
+            function playPause() {
+                if (audio.paused) {
+                    audio.play();
+                    
+                } else {
+                    audio.pause();
+                    
+                }
+            }
+        }
+        window.addEventListener("load", initAudioPlayer);
+    </script>
+</body>
+
+</html>
