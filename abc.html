@@ -1,0 +1,66 @@
+<html>
+
+<head>
+	<style>
+		body{
+			margin:0;
+			padding:0;
+		}
+		div{
+			height: 100vh;
+			width: 100vw;
+			background: url("desert.png");
+		}
+
+		
+	</style>
+	<body>
+		<form action="/action_page.php">
+  <label for="val">	Opacity (between 0 and 100):</label>
+  <input type="range" id="val" name="val" min="0" max="100" oninput="calcOpacity()">
+  <!--<input type="button" onclick="calcOpacity()">-->
+</form>
+		<div id="cloudholder"><div id="ds" style="opacity: 1;">
+
+		 </div></div>
+		
+		
+		
+		
+		
+
+		<script src="three.r119.min.js"></script>
+<script src="vanta.clouds.min.js"></script>
+<script>
+VANTA.CLOUDS({
+  el: "#cloudholder",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00
+})
+
+function calcOpacity()
+{
+	tmp=document.getElementById("val").value;
+	tmp=1-tmp/100;
+	document.getElementById("ds").style.opacity=tmp;
+
+}
+
+/*
+const checkpoint = 300;
+ 
+window.addEventListener("scroll", () => {
+  const currentScroll = window.pageYOffset;
+  if (currentScroll <= checkpoint) {
+    opacity = 0 + currentScroll / checkpoint;
+  } else {
+    opacity = 1;
+  }
+  document.querySelector("div#cloudholder").style.opacity = opacity;
+});*/
+</script>
+	</body>
+</html>
